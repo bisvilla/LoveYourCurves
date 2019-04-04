@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserResource::collection(User::orderBy('score', 'desc')->simplePaginate(100));
+        return UserResource::collection(User::orderBy('score', 'desc')->where('ball_name', request()->input('ballname'))->simplePaginate(100));
     }
 
     /**
