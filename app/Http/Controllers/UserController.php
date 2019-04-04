@@ -16,6 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
+		if(is_null(request()->input('ballname')) || request()->input('ballname') != '') {
+			return UserResource::collection(User::orderBy('score', 'desc')->simplePaginate(100));
+		}
+		
         return UserResource::collection(User::orderBy('score', 'desc')->where('ball_name', request()->input('ballname'))->simplePaginate(100));
     }
 
