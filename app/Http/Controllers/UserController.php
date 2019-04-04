@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserResource::collection(User::orderBy('score', 'desc')->get());
+        return UserResource::collection(User::orderBy('score', 'desc')->simplePaginate(100));
     }
 
     /**
